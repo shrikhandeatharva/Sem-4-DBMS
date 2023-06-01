@@ -21,12 +21,12 @@ SELECT * FROM Emp_Company;
 SELECT * FROM Company;
 SELECT * FROM Manager;
 SELECT * FROM Emp_Shift;
-
+--find the employee names and cities they live in for the employee working in company acc
 SELECT e.ename,e.city FROM Employee e WHERE e.ename IN(SELECT ec.ename FROM Emp_Company ec WHERE ec.cname = "ACC");
-
+--list the employee living in city bomnbay and those having company located in delhi
 SELECT e.ename FROM Employee e WHERE e.city='Bombay' and EXISTS (SELECT c.city FROM Company c WHERE c.city='Delhi');
 
-
+--lost the names of employees living in same city where sunil is living
 SELECT e.ename FROM Employee e WHERE e.city IN (SELECT e1.city FROM Employee e1 WHERE e1.ename='Sunil'); 
 
 SELECT e2.ename

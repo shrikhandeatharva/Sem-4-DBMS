@@ -14,14 +14,14 @@ SELECT * FROM Sailors;
 SELECT * FROM Boats;
 SELECT * FROM Reserves;
 
---Query1
+--Query1  find sailor's id who have reserved red boats or green boats
 SELECT s.SID
 FROM Sailors s 
 WHERE s.SID IN (SELECT r.SID FROM Reserves r,Boats b WHERE b.color='Red' and b.BID=r.BID 
 UNION
 SELECT r.SID FROM Reserves r,Boats b WHERE b.color='Green' and b.BID=r.BID);
 
---Query2
+--Query2  find sailor names who have reserved both red and green boats
 SELECT s.sname 
 FROM Sailors s 
 WHERE s.SID IN (SELECT r.SID FROM Reserves r,Boats b WHERE b.color='Red' and b.BID=r.BID 
@@ -29,7 +29,7 @@ INTERSECT
 SELECT r.SID FROM Reserves r,Boats b WHERE b.color='Green' and b.BID=r.BID);
 
 
---Query3
+--Query3  find sailor names who have reserved red but not green boats
 SELECT s.sname 
 FROM Sailors s 
 WHERE s.SID IN (SELECT r.SID FROM Reserves r,Boats b WHERE b.color='Red' and b.BID=r.BID 

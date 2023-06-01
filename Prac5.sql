@@ -23,32 +23,32 @@ SELECT * FROM Manager;
 SELECT * FROM Emp_Shift;
 
 
---Que1
+--Que1  list the name of employee having maximum salary
 SELECT ename FROM Emp_company WHERE salary IN (SELECT MAX(salary) FROM Emp_company); 
 
---Que2
+--Que2  list the names of employees having maximum salary in their company 
 SELECT e1.ename 
 FROM Emp_company e1 
 WHERE e1.salary IN (SELECT MAX(e2.salary) FROM Emp_company e2 GROUP BY e2.cname);
 
---Que3
+--Que3  find the average salary of each company except 'acc'
 SELECT cname,AVG(salary) FROM Emp_company WHERE cname!='ACC' GROUP BY cname;
 
---Que4
+--Que4  find the average salary of company only for those employees living in delhi
 SELECT cname,AVG(salary)
 FROM Emp_company 
 WHERE ename IN (SELECT ename FROM employee WHERE city='Delhi') 
 GROUP BY cname;
 
---Que5
+--Que5  find the name of company having the highest average salary
 SELECT e1.cname 
 FROM Emp_company e1 
 WHERE e1.cname=(SELECT cname FROM Emp_company WHERE salary=(SELECT MAX(salary) FROM Emp_company));
 
---Que6
+--Que6 list the number of employees living in bombay
 SELECT COUNT(ename) FROM employee WHERE city='Bombay';
 
---Que7
+--Que7  list the name of employees with his living city having mximum salary in company tata
 SELECT e1.ename,e1.city 
 FROM employee e1,Emp_company e2 
 WHERE e2.salary IN (SELECT MAX(salary) FROM Emp_company WHERE cname='TATA') and e2.ename=e1.ename;

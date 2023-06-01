@@ -19,7 +19,7 @@ CREATE TABLE Emp_Shift(ename varchar2(10),shift varchar2(10));
 INSERT INTO Emp_Shift VALUES('Sunil','A'),('Vijay','A'),('Amar','B'),('Atharva','C');
 SELECT * FROM Emp_Shift; 
 
-
+-- decrease the salary of vijay by 100 if sunil and vijay are living in city madras 
 UPDATE Emp_Company 
 SET salary = salary - 100
 WHERE ename = 'Vijay' and 
@@ -29,13 +29,13 @@ WHERE ename = 'Vijay' AND city = 'Madras' AND city IN
  WHERE ename = 'Sunil'));
  SELECT * FROM Emp_Company;
 
-
+--all emplyees of acc having salary greater ehan 8000 are shifted to tata
 UPDATE Emp_Company 
  SET cname = 'TATA' 
  WHERE salary > 8000 and cname = 'ACC';
  SELECT * FROM Emp_Company;
 
-
+--decreasing the salary of employee vijay by 100 and increase the salary of employee sunil by 100
  UPDATE Emp_Company 
  SET salary = salary - 100
  WHERE ename = 'Vijay';
@@ -44,7 +44,7 @@ UPDATE Emp_Company
  WHERE ename = 'Sunil';
  SELECT * FROM Emp_Company;
 
-
+--delete the rows of emp_company having salary greater than 8000
 DELETE FROM Emp_Company 
 WHERE salary > 8000;
 SELECT * FROM Emp_Company;
